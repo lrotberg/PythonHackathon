@@ -5,3 +5,8 @@ class BasePage:
     global driver
     driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.maximize_window()
+
+
+
+
+#desktop
