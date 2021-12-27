@@ -11,4 +11,8 @@ class HeaderPage:
     def tab_everyone(self):
         return self.driver.find_element(By.CSS_SELECTOR, "a[data-test='nav-public-tab']")
 
-    de
+    def tab_friends(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "a[data-test='nav-contacts-tab']")
+
+    def tab_mine(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "a[data-test='nav-personal-tab']")

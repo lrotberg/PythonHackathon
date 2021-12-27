@@ -2,15 +2,20 @@ import pytest
 
 import test.conftest as conf
 import workflows.web_flows as wf
+import test.users_ddt as ddt
 
 from utilities.common_ops import get_data
 
+
 @pytest.mark.usefixtures("init_web")
 class Test_Web:
-    def test_check_balance(self):
-        expected_balance = "$1,681.37"
-        conf.driver.get("http://localhost:9090/signin")
-        wf.login("Katharina_Bernier", "s3cret")
+    def teardown_method(self):
+        wf.logout()
+
+    @pytest.mark.parametrize(ddt.users_headers, ddt.users)
+    def test_check_balance(self, username, password, expected_balance):
+        conf.driver.get(get_data("url_web") + "/signin")
+        wf.login(username, password)
         conf.driver.implicitly_wait(2)
 
         assert wf.get_balance() == expected_balance
@@ -24,4 +29,3 @@ class Test_Web:
         conf.driver.implicitly_wait(2)
 
         assert wf.get_modal_text() == expected_text
-

@@ -9,7 +9,6 @@ from utilities.event_listener import EventListener
 from utilities.manage_web_pages import ManageWebPages
 from utilities.manage_desktop_pages import ManageDesktopPages
 
-
 from utilities.common_ops import get_data
 
 driver = None
@@ -21,6 +20,7 @@ menu_page = None
 modal_page = None
 
 calc_page = None
+
 
 @pytest.fixture(scope='class')
 def init_web(request):
@@ -55,5 +55,3 @@ def init_desktop(request):
 
     yield
     driver.quit()
-
-
