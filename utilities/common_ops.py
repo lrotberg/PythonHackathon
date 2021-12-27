@@ -11,7 +11,7 @@ def get_data(self, node_name):
 
 def attach_screenshot(self):
     now = datetime.now()
-    image_name = "screen_" + now.strftime("%d-%b-%Y_%H-%M-%p")
+    image_name = "screen_" + now.strftime("%d-%b-%Y_%H%M%p")
     image = "./../screenshots/" + image_name + ".png"
     conf.driver.get_screenshot_as_file(image)
     allure.attach.file(image, attachment_type=allure.attachment_type.PNG)

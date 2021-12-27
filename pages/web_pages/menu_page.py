@@ -19,3 +19,6 @@ class MenuPage:
 
     def logout_button(self):
         return self.driver.find_element(By.CSS_SELECTOR, "div[data-test='sidenav-signout']")
+
+    def balance_heading(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "h6[data-test='sidenav-user-balance']")

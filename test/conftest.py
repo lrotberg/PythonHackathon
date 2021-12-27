@@ -6,9 +6,16 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 from utilities.event_listener import EventListener
+from utilities.manage_web_pages import ManageWebPages
 
 driver = None
 action = None
+
+sign_in_page = None
+sign_up_page = None
+menu_page = None
+modal_page = None
+
 browser_type = "chrome"
 
 @pytest.fixture(scope='class')
@@ -20,14 +27,25 @@ def init_web(request):
 
     driver = EventFiringWebDriver(edriver, EventListener())
 
-
     globals()['driver'] = driver
     request.cls.driver = driver
     driver.maximize_window()
+    ManageWebPages.init_web_pages(driver)
 
     yield
-    driver.close()
+    driver.quit()
 
 @pytest.fixture(scope='class')
 def init_desktop(request):
-    pass
+    desired_caps = {}
+    desired_caps["app"] = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App"
+    desired_caps["platformName"] = "Windows"
+    desired_caps["deviceName"] = "WindowsPC"
+    edriver = webdriver.Remote("http://127.0.0.1:4723", desired_caps)
+
+    driver = EventFiringWebDriver(edriver, EventListener())
+    globals()['driver'] = driver
+    request.cls.driver = driver
+
+    yield
+    driver.quit()

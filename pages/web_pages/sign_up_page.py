@@ -26,14 +26,4 @@ class SignUpPage:
     def sign_in_link(self):
         return self.driver.find_element(By.CSS_SELECTOR, "a[href='/signin']")
 
-    def register(self, first_name, last_name, username, password, confirm_password):
-        self.first_name_input().send_keys(first_name)
-        self.last_name_input().send_keys(last_name)
-        self.username_input().send_keys(username)
-        self.password_input().send_keys(password)
-        self.confirm_password_input().send_keys(confirm_password)
-        self.sign_up_button().click()
-
-    def navigate_to_signin(self):
-        self.sign_in_link().click()
 
