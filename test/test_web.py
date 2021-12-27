@@ -16,11 +16,12 @@ class Test_Web:
         assert wf.get_balance() == expected_balance
 
     def test_register_user(self):
+        expected_text = "Get Started with Real World App"
         conf.driver.get(get_data("url_web") + "/signup")
         wf.register("Lior", "Rotberg", "Lrotberg", "s3cret", "s3cret")
         conf.driver.implicitly_wait(2)
         wf.login("Lrotberg", "s3cret")
         conf.driver.implicitly_wait(2)
 
-        assert wf.get_modal_text() == "Get Started with Real World App"
+        assert wf.get_modal_text() == expected_text
 
