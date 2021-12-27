@@ -51,7 +51,7 @@ def init_desktop(request):
     driver = EventFiringWebDriver(edriver, EventListener())
     globals()['driver'] = driver
     request.cls.driver = driver
-    ManageDesktopPages(driver)
+    ManageDesktopPages.init_desktop_pages(driver)
 
     yield
     driver.quit()
