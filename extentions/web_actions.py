@@ -17,6 +17,6 @@ def clear_text(element: WE):
     element.clear()
 
 
-@allure.step("Result_calc")
+@allure.step("Get Calculation Result")
 def get_result_calc(element: WE):
     return element.text.replace("Display is", "").strip()
