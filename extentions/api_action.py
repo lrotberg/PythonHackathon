@@ -1,10 +1,11 @@
 import requests
 from utilities.common_ops import get_data
 
+
 class API_action:
     @staticmethod
     def get_posts(url):
-        response=requests.get(get_data("url_api") + url)
+        response = requests.get(get_data("url_api") + url)
         return response
 
     @staticmethod
@@ -15,6 +16,5 @@ class API_action:
 
     @staticmethod
     def delete_posts(url):
-        response = requests.delete(get_data("url_api") +url)
+        response = requests.delete(get_data("url_api") + url)
         return response
-

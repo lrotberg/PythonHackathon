@@ -6,4 +6,6 @@
     <deviceName>WindowsPC</deviceName>
     <url_desktop>http://127.0.0.1:4723</url_desktop>
     <url_api>http://localhost:3000</url_api>
+    <browser_type>chrome</browser_type>
+    <url_web>http://localhost:9090</url_web>
 </Environment>
