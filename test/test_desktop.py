@@ -1,11 +1,14 @@
+import allure
 import pytest
 import test.conftest as conf
-from workflows.desktop_wf import Desktop_wf
+from extentions.web_actions import get_result_calc
+from workflows import desktop_wf
 
 
 @pytest.mark.usefixtures('init_desktop')
 class Test_Desktop:
 
+    @allure.step("Test_calculate_addition")
     def test_01(self):
-        Desktop_wf.calculation(self)
-        assert conf.calc_page.get_result() == '6'
+       desktop_wf.calculate_addition()
+       assert get_result_calc(conf.calc_page.get_result()) == '6'
