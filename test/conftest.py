@@ -21,7 +21,6 @@ def init_web(request):
     driver = EventFiringWebDriver(edriver, EventListener())
 
 
-
     globals()['driver'] = driver
     request.cls.driver = driver
     driver.maximize_window()

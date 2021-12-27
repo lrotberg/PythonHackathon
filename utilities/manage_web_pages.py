@@ -1,4 +1,3 @@
-from pages.web_pages import sign_in_page, sign_up_page, menu_page
 from pages.web_pages.sign_in_page import SignInPage
 from pages.web_pages.sign_up_page import SignUpPage
 from pages.web_pages.menu_page import MenuPage

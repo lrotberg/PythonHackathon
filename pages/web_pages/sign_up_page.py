@@ -34,3 +34,6 @@ class SignUpPage:
         self.confirm_password_input().send_keys(confirm_password)
         self.sign_up_button().click()
 
+    def navigate_to_signin(self):
+        self.sign_in_link().click()
+
