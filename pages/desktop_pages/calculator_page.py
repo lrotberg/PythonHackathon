@@ -6,19 +6,18 @@ class CalculatorPage:
         self.driver = driver
 
     def get_one(self):
-        return self.driver.find_element(By.NAME,"One").click()
+        return self.driver.find_element(By.NAME,"One")
 
     def get_plus(self):
-        return self.driver.find_element(By.NAME,"Plus").click()
+        return self.driver.find_element(By.NAME,"Plus")
 
     def get_five(self):
-        return self.driver.find_element(By.NAME,"Five").click()
+        return self.driver.find_element(By.NAME,"Five")
 
     def get_equals(self):
-        return self.driver.find_element(By.NAME,"Equals").click()
+        return self.driver.find_element(By.NAME,"Equals")
 
     def get_result(self):
-        return self.driver.find_element(By.XPATH, "//*[@AutomationId='CalculatorResults']").\
-            text.replace("Display is","").strip()
+        return self.driver.find_element(By.XPATH, "//*[@AutomationId='CalculatorResults']")
 
 

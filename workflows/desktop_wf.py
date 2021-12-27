@@ -1,10 +1,12 @@
+import allure
+
 import test.conftest as conf
+from extentions.web_actions import click
 
 
-class Desktop_wf:
-
-    def calculation(self):
-        conf.calc_page.get_one()
-        conf.calc_page.get_plus()
-        conf.calc_page.get_five()
-        conf.calc_page.get_equals()
+@allure.step("calculate_addition")
+def calculate_addition():
+    click(conf.calc_page.get_one())
+    click(conf.calc_page.get_plus())
+    click(conf.calc_page.get_five())
+    click(conf.calc_page.get_equals())
