@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-
 class SignInPage:
     def __init__(self, driver):
         self.driver = driver
@@ -19,11 +18,3 @@ class SignInPage:
 
     def sign_up_link(self):
         return self.driver.find_element(By.CSS_SELECTOR, "a[href='/signup']")
-
-    def login(self, username, password):
-        self.username_input().send_keys(username)
-        self.password_input().send_keys(password)
-        self.sign_in_button().click()
-
-    def navigate_to_signup(self):
-        self.sign_up_link().click()
