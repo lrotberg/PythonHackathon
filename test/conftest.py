@@ -23,6 +23,7 @@ modal_page = None
 header_page = None
 transaction_select_page = None
 transaction_pay_page = None
+notifications_page = None
 
 calc_page = None
 

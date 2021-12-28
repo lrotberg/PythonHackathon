@@ -16,3 +16,6 @@ class HeaderPage:
     #
     # def tab_mine(self):
     #     return self.driver.find_element(By.CSS_SELECTOR, "a[data-test='nav-personal-tab']")
+
+    def notifications_bubble(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "span.MuiBadge-badge")

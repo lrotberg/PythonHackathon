@@ -17,10 +17,9 @@ class Test_Web:
     @allure.description("This test should login to a user and then check its balance")
     @pytest.mark.parametrize(ddt.users_headers, ddt.users)
     def test_check_balance(self, username, password, expected_balance):
-        conf.driver.get(get_data("url_web") + "/signin")
         wf.login(username, password)
 
-        assert wf.get_balance() == expected_balance
+        assert wf.get_str_balance() == expected_balance
 
     @allure.title("Test User Registration")
     @allure.description("This test should register a new user and then"
@@ -38,12 +37,31 @@ class Test_Web:
     @allure.title("Test Send Money")
     @allure.description("This test should")
     def test_send_money(self):
-        conf.driver.get(get_data("url_web") + "/signin")
         wf.login("Katharina_Bernier", "s3cret")
         conf.driver.implicitly_wait(2)
 
+        balance_before = wf.get_number_balance()
+        payment_amount = 10
+
         wf.navigate_to_new_transaction()
         conf.driver.implicitly_wait(2)
+
         wf.choose_contact(3)
         conf.driver.implicitly_wait(2)
-        wf.send_payment_request(10, "For The Pizza")
+
+        wf.send_payment(payment_amount, "For The Pizza")
+        conf.driver.implicitly_wait(2)
+
+        assert wf.get_number_balance() == balance_before - payment_amount
+
+    @allure.title("Test Number of Notifications")
+    @allure.description("This test should verify that there are the same amount of notifications"
+                        " on the notifications list as there are in the bubble")
+    def test_num_of_notifications(self):
+        wf.login("Katharina_Bernier", "s3cret")
+        conf.driver.implicitly_wait(2)
+
+        wf.navigate_to_notifications()
+        conf.driver.implicitly_wait(2)
+
+        assert wf.get_notifications_list_length() == wf.get_notifications_number()
