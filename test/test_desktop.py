@@ -2,7 +2,7 @@ import allure
 import pytest
 import test.conftest as conf
 from extentions.web_actions import get_result_calc
-from workflows import desktop_wf
+from workflows import desktop_flows
 
 
 @pytest.mark.usefixtures('init_desktop')
