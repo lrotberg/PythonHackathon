@@ -6,7 +6,7 @@ from xml.etree import ElementTree as ET
 import test.conftest as conf
 
 def get_data(node_name):
-    root = ET.parse("./../ExternalData.xml").getroot()
+    root = ET.parse("./ExternalData.xml").getroot()
     return root.find(".//" + node_name).text
 
 def attach_screenshot():

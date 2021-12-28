@@ -39,6 +39,19 @@ def register(first_name, last_name, username, password, confirm_password):
     update_text(conf.sign_up_page.password_input(), password)
     update_text(conf.sign_up_page.confirm_password_input(), confirm_password)
     click(conf.sign_up_page.sign_up_button())
+    conf.driver.implicitly_wait(3)
+
+@allure.step("Finish User Registration")
+def finish_registration():
+    click(conf.modal_page.next_button())
+    conf.driver.implicitly_wait(3)
+    update_text(conf.modal_page.bank_name_input(), "temp bank")
+    update_text(conf.modal_page.routing_number(), "851823229")
+    update_text(conf.modal_page.account_number(), "6123387981")
+    click(conf.modal_page.save_button())
+    conf.driver.implicitly_wait(3)
+    click(conf.modal_page.done_button())
+    conf.driver.implicitly_wait(3)
 
 
 @allure.step("Get User String Balance")

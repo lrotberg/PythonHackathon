@@ -1,5 +1,5 @@
 from selenium.webdriver.support.events import EventFiringWebDriver, AbstractEventListener
-
+from utilities.common_ops import attach_screenshot
 
 class EventListener(AbstractEventListener):
     button_text = None
@@ -85,9 +85,6 @@ class EventListener(AbstractEventListener):
         print("After Quiting Session")
 
     def on_exception(self, exception, driver):
+        attach_screenshot()
         print("On Exception: ", exception)
 
-#   global driver
-#   driver_service = Service(ChromeDriverManager().install())
-#   edriver = webdriver.Chrome(service=driver_service)
-#   driver = EventFiringWebDriver(edriver, EventListener())
