@@ -6,8 +6,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 from utilities.event_listener import EventListener
+from utilities.manage_electron_page import ManageElectronPages
 from utilities.manage_web_pages import ManageWebPages
 from utilities.manage_desktop_pages import ManageDesktopPages
+
 
 from utilities.common_ops import get_data
 
@@ -23,6 +25,8 @@ transaction_select_page = None
 transaction_pay_page = None
 
 calc_page = None
+
+demo_page = None
 
 
 @pytest.fixture(scope='class')
@@ -58,3 +62,17 @@ def init_desktop(request):
 
     yield
     driver.quit()
+
+@pytest.fixture(scope='class')
+def init_electron(request):
+    options = webdriver.ChromeOptions()
+    options.binary_location = get_data("electron_app")
+    driver = webdriver.Chrome(chrome_options=options, executable_path=get_data("edriver"))
+    globals()['driver'] = driver
+    request.cls.driver = driver
+    ManageElectronPages.init_electron_pages(driver)
+
+    yield
+    driver.quit()
+
+

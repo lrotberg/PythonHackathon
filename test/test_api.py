@@ -1,4 +1,4 @@
-import workflows.api_wf as wf
+import workflows.api_flows as wf
 
 
 class Test_API_Requests:
