@@ -10,4 +10,12 @@
     <url_web>http://localhost:9090</url_web>
     <electron_app>D:/Automation/electron-api-demos-windows/Electron API Demos-win32-ia32/Electron API Demos.exe</electron_app>
     <edriver>D:/Automation/electrondriver-v3.1.2-win32-x64/electrondriver.exe</edriver>
+    <report_directory>reports</report_directory>
+    <report_format>xml</report_format>
+    <test_name>Untitled</test_name>
+    <platformName_mobile>android</platformName_mobile>
+    <url_mobile>http://localhost:4723/wd/hub</url_mobile>
+    <udid>9888d341544d313650</udid>
+    <app_package>com.financial.calculator</app_package>
+    <app_activity>.FinancialCalculators</app_activity>
 </Environment>

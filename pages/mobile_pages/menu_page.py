@@ -5,13 +5,13 @@ class MenuPage:
     def __init__(self, driver):
         self.driver = driver
 
-    def search_Box(self):
+    def search_button(self):
         return self.driver.find_element_by_xpath("xpath=//*[@id='search']")
 
-    def search_button(self):
+    def search_input(self):
         return self.driver.find_element_by_xpath("//*[@id='search_src_text']")
 
-    def Navigate_home(self):
+    def navigate_home(self):
         return self.driver.find_element_by_xpath("xpath=//*[@contentDescription='Navigate up']")
 
     def test_search(self):
