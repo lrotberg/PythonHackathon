@@ -1,4 +1,5 @@
 import pytest
+from applitools.selenium import Eyes
 
 from selenium import webdriver
 from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
@@ -33,6 +34,9 @@ mobile_menu_page = None
 mobile_calc_page = None
 credit_card_min_page = None
 
+eyes = None
+
+
 @pytest.fixture(scope='class')
 def init_web(request):
     if get_data("browser_type") == "chrome":
@@ -40,14 +44,23 @@ def init_web(request):
     elif get_data("browser_type") == "firefox":
         edriver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
 
-    driver = EventFiringWebDriver(edriver, EventListener())
-
+    # driver = EventFiringWebDriver(edriver, EventListener())
+    driver = edriver
     globals()['driver'] = driver
     request.cls.driver = driver
     driver.maximize_window()
+
+    eyes = Eyes()
+    globals()['eyes'] = eyes
+    request.cls.eyes = eyes
+
+    eyes.api_key = get_data("EyesAPIKey")
+    eyes.open(driver, get_data("EyesApplitoolsTitle"), get_data("EyesApplitoolsSubTitle"))
+
     ManageWebPages.init_web_pages(driver)
 
     yield
+    eyes.abort()
     driver.quit()
 
 

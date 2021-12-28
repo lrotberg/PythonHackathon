@@ -1,6 +1,7 @@
 from selenium.webdriver.support.events import EventFiringWebDriver, AbstractEventListener
 from utilities.common_ops import attach_screenshot
 
+
 class EventListener(AbstractEventListener):
     button_text = None
 
@@ -87,4 +88,3 @@ class EventListener(AbstractEventListener):
     def on_exception(self, exception, driver):
         attach_screenshot()
         print("On Exception: ", exception)
-

@@ -1,4 +1,6 @@
 import allure
+
+import test.conftest as conf
 from selenium.webdriver.remote.webelement import WebElement as WE
 
 
@@ -25,3 +27,8 @@ def get_result_calc(element: WE):
 @allure.step("Get Element Text")
 def get_text(element: WE):
     return element.text
+
+
+@allure.step("eyes check window")
+def eyes_check_window(string):
+    conf.eyes.check_window(string)

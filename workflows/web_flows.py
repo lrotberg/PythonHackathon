@@ -1,19 +1,22 @@
 import allure
 import re
 
-from extentions.web_actions import click, clear_text, update_text, get_text
-from utilities.common_ops import get_data
+from extentions.web_actions import click, clear_text, update_text, get_text, eyes_check_window
 
 import test.conftest as conf
 
 
 @allure.step("Login")
 def login(username, password):
-    conf.driver.get(get_data("url_web") + "/signin")
     update_text(conf.sign_in_page.username_input(), username)
     update_text(conf.sign_in_page.password_input(), password)
     click(conf.sign_in_page.sign_in_button())
     conf.driver.implicitly_wait(2)
+
+
+@allure.step("Home page check window")
+def check_home_page_window(string):
+    eyes_check_window(string)
 
 
 @allure.step("Logout")
@@ -40,6 +43,7 @@ def register(first_name, last_name, username, password, confirm_password):
     update_text(conf.sign_up_page.confirm_password_input(), confirm_password)
     click(conf.sign_up_page.sign_up_button())
     conf.driver.implicitly_wait(3)
+
 
 @allure.step("Finish User Registration")
 def finish_registration():
@@ -98,9 +102,11 @@ def send_payment(amount, note):
     update_text(conf.transaction_pay_page.note_input(), note)
     click(conf.transaction_pay_page.pay_button())
 
+
 @allure.step("Get Notifications Number")
 def get_notifications_number():
     return int(get_text(conf.header_page.notifications_bubble()))
+
 
 @allure.step("Get Notifications List")
 def get_notifications_list_length():

@@ -18,4 +18,9 @@
     <udid>9888d341544d313650</udid>
     <app_package>com.financial.calculator</app_package>
     <app_activity>.FinancialCalculators</app_activity>
+    <EyesAPIKey>tAt1GS3alySmckzk0irFgoWWzp4o1MssbAqnqU2H6d8110</EyesAPIKey>
+    <EyesApplitoolsTitle>TestWebHomePage4</EyesApplitoolsTitle>
+    <EyesApplitoolsSubTitle>HomePage</EyesApplitoolsSubTitle>
+    <CheckWindowBase>HomePage</CheckWindowBase>
+    <CheckWindowAfter>After Click on Home</CheckWindowAfter>
 </Environment>
