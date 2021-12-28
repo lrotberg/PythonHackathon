@@ -29,5 +29,5 @@ def init_web(request):
     driver.close()
 
 @pytest.fixture(scope='class')
-def init_desktop(request):
+def init_desktop(request):  
     pass
