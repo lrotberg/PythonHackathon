@@ -14,6 +14,17 @@ class MenuPage:
     def Navigate_home(self):
         return self.driver.find_element_by_xpath("xpath=//*[@contentDescription='Navigate up']")
 
+    def all_items(self):
+        return self.driver.find_elements(By.XPATH,"//*[@id='colorStrip']")
+
+
+    def search_function(self ,temp):
+        self.search_Box().click()
+        self.search_button().send_keys(temp)
+
+
+
+
     def test_search(self):
         self.driver.find_element_by_xpath("xpath=//*[@id='search']").click()
         time.sleep(3)

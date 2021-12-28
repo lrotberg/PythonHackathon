@@ -1,3 +1,4 @@
+import mysql as mysql
 import pytest
 
 from selenium import webdriver
@@ -5,8 +6,9 @@ from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriv
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
+from utilities import common_ops
 from utilities.event_listener import EventListener
-
+my_db = None
 driver = None
 action = None
 browser_type = "chrome"
@@ -30,4 +32,17 @@ def init_web(request):
 
 @pytest.fixture(scope='class')
 def init_desktop(request):  
+    pass
+def init_DB():
+    mydb = mysql.connector.connect(
+        host=common_ops.get_data("host"),
+        database=common_ops.get_data("databaseDB"),
+        user=common_ops.get_data("usernameDB"),
+        password=common_ops.get_data("passwordDB")
+    )
+    return mydb
+
+
+@pytest.fixture(scope='class')
+def init_mobile(request):
     pass
