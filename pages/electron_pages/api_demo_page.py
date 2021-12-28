@@ -12,8 +12,12 @@ class APIDemoPage:
     def get_verify_menus(self):
         return self.driver.find_element(By.XPATH, "//*[@id='menus-section']/header/div/h3/code[1]")
 
-    def get_open_external_links(self):
-        return self.driver.find_element(By.ID, "button-ex-links-file-manager")
+    def get_sys_information(self):
+        return self.driver.find_element(By.ID, "button-app-sys-information")
 
-    def get_verify_links_file(self):
-        return self.driver.find_element(By.XPATH, "//*[@id='ex-links-file-manager-section']/header/div/h3/code")
+    def get_view_demo(self):
+        return self.driver.find_element(By.ID, "screen-info")
+
+    def get_result(self):
+        return self.driver.find_element(By.ID, "got-screen-info")
+
