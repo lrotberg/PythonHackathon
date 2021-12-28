@@ -7,9 +7,9 @@ from webdriver_manager.firefox import GeckoDriverManager
 
 from utilities.event_listener import EventListener
 from utilities.manage_electron_page import ManageElectronPages
+from utilities.manage_mobile_pages import ManageMobilePages
 from utilities.manage_web_pages import ManageWebPages
 from utilities.manage_desktop_pages import ManageDesktopPages
-
 
 from utilities.common_ops import get_data
 
@@ -29,6 +29,9 @@ calc_page = None
 
 demo_page = None
 
+mobile_menu_page = None
+mobile_calc_page = None
+credit_card_min_page = None
 
 @pytest.fixture(scope='class')
 def init_web(request):
@@ -64,11 +67,13 @@ def init_desktop(request):
     yield
     driver.quit()
 
+
 @pytest.fixture(scope='class')
 def init_electron(request):
     options = webdriver.ChromeOptions()
     options.binary_location = get_data("electron_app")
-    driver = webdriver.Chrome(chrome_options=options, executable_path=get_data("edriver"))
+    edriver = webdriver.Chrome(chrome_options=options, executable_path=get_data("edriver"))
+    driver = EventFiringWebDriver(edriver, EventListener())
     globals()['driver'] = driver
     request.cls.driver = driver
     ManageElectronPages.init_electron_pages(driver)
@@ -77,3 +82,22 @@ def init_electron(request):
     driver.quit()
 
 
+@pytest.fixture(scope='class')
+def init_mobile(request):
+    desired_caps = {}
+    desired_caps['reportDirectory'] = get_data("report_directory")
+    desired_caps['reportFormat'] = get_data("report_format")
+    desired_caps['testName'] = get_data("test_name")
+    desired_caps['udid'] = get_data("udid")
+    desired_caps['appPackage'] = get_data("app_package")
+    desired_caps['appActivity'] = get_data("app_activity")
+    desired_caps['platformName'] = get_data("platformName_mobile")
+
+    edriver = webdriver.Remote(get_data("url_mobile"), desired_caps)
+    driver = EventFiringWebDriver(edriver, EventListener())
+    globals()['driver'] = driver
+    request.cls.driver = driver
+    ManageMobilePages.init_mobile_pages(driver)
+
+    yield
+    driver.quit()

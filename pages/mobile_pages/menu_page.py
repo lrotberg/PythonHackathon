@@ -5,41 +5,24 @@ class MenuPage:
     def __init__(self, driver):
         self.driver = driver
 
-    def search_Box(self):
-        return self.driver.find_element_by_xpath("xpath=//*[@id='search']")
-
     def search_button(self):
-        return self.driver.find_element_by_xpath("//*[@id='search_src_text']")
+        return self.driver.find_element(By.ID, "search")
 
-    def Navigate_home(self):
-        return self.driver.find_element_by_xpath("xpath=//*[@contentDescription='Navigate up']")
+    def search_input(self):
+        return self.driver.find_element(By.ID, "search_src_text")
 
-    def all_items(self):
-        return self.driver.find_elements(By.XPATH,"//*[@id='colorStrip']")
+    def navigate_home(self):
+        return self.driver.find_element(By.XPATH, "//*[@contentDescription='Navigate up']")
 
+    def keyboard_by_object(self):
+        return (By.XPATH, "//*[@class='android.view.View' and ./parent::*[@id='inputArea']]/*["
+                          "@class='bkn$a'][43]")
 
-    def search_function(self ,temp):
-        self.search_Box().click()
-        self.search_button().send_keys(temp)
+    def color_strip(self):
+        return self.driver.find_elements(By.ID, "colorStrip")
 
+    def calculator_app(self):
+        return self.driver.find_element(By.XPATH, "//*[@text='Calculator']")
 
-
-
-    def test_search(self):
-        self.driver.find_element_by_xpath("xpath=//*[@id='search']").click()
-        time.sleep(3)
-        self.driver.find_element_by_xpath("//*[@id='search_src_text']").send_keys('roi')
-        WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located((By.XPATH,'(//*[@class="android.view.View" and ./parent::*[@id="inputArea"]]/*[@class="bkn$a"])[43]')))
-        self.driver.find_element_by_xpath("xpath=(//*[@class='android.view.View' and ./parent::*[@id='inputArea']]/*[@class='bkn$a'])[43]").click()
-        total_items=self.driver.find_elements(By.XPATH,"//*[@id='colorStrip']")
-        print("Length is  : "+ str(len(total_items)))
-        assert len(total_items)==2
-        self.driver.find_element_by_xpath("xpath=//*[@contentDescription='Navigate up']").click()
-
-
-
-
-
-
-
-
+    def credit_card_app(self):
+        return self.driver.find_element(By.XPATH, "//*[@text='Credit Card Minimum Payment']")
