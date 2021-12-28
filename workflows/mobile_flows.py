@@ -1,4 +1,7 @@
+import time
+
 import allure
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -12,25 +15,28 @@ import test.conftest as conf
 def search(value):
     click(conf.mobile_menu_page.search_button())
     conf.driver.implicitly_wait(3)
-    update_text(conf.mobile_menu_page(), value)
+    update_text(conf.mobile_menu_page.search_input(), value)
 
 
-@allure.step("Wait for Keyboard")
-def wait_keyboard_and_click():
-    WebDriverWait(conf.driver, 30).until(
-        ec.presence_of_element_located(conf.mobile_menu_page.keyboard_by_object())
-    )
-    click(conf.mobile_menu_page.keyboard_by_object())
+@allure.step("Search click")
+def search_click():
+    click(conf.mobile_menu_page.search_it())
+    conf.driver.implicitly_wait(10)
 
 
 @allure.step("Get Color Strip List Length")
-def get_color_strip_length():
-    return len(conf.menu_page.color_strip())
+def get_listview_length():
+    time.sleep(2)
+    try:
+        conf.menu_page.roi_appear()
+    except NoSuchElementException:
+        return False
+        return True
 
 
 @allure.step("Navigate Home")
 def navigate_home():
-    click(conf.mobile_menu_page.navigate_home())
+    click(conf.mobile_menu_page.navigate_back())
 
 
 @allure.step("Navigate to Calculator App")
@@ -50,6 +56,7 @@ def multiply_action():
     click(conf.mobile_calc_page.number_9_button())
     click(conf.mobile_calc_page.equals_button())
     return get_text(conf.mobile_calc_page.result_field())
+
 
 @allure.step("Calculate Loan")
 def calculate_loan():

@@ -11,15 +11,15 @@ class MenuPage:
     def search_input(self):
         return self.driver.find_element(By.ID, "search_src_text")
 
-    def navigate_home(self):
-        return self.driver.find_element(By.XPATH, "//*[@contentDescription='Navigate up']")
+    def search_it(self):
+        return self.driver.find_element(By.ID, "search_go_btn")
 
-    def keyboard_by_object(self):
-        return (By.XPATH, "//*[@class='android.view.View' and ./parent::*[@id='inputArea']]/*["
-                          "@class='bkn$a'][43]")
+    def roi_appear(self):
+        return self.driver.find_elements(By.XPATH, "//*[@text='ROI Calculator']")
 
-    def color_strip(self):
-        return self.driver.find_elements(By.ID, "colorStrip")
+    def navigate_back(self):
+        return self.driver.find_element(By.XPATH,"//*[@contentDescription='Navigate up']")
+
 
     def calculator_app(self):
         return self.driver.find_element(By.XPATH, "//*[@text='Calculator']")
