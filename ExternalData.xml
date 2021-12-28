@@ -10,4 +10,9 @@
     <url_web>http://localhost:9090</url_web>
     <electron_app>D:/Automation/electron-api-demos-windows/Electron API Demos-win32-ia32/Electron API Demos.exe</electron_app>
     <edriver>D:/Automation/electrondriver-v3.1.2-win32-x64/electrondriver.exe</edriver>
+      <!--  DB   -->
+    <host>sql6.freemysqlhosting.net</host>
+    <usernameDB>sql6461693</usernameDB>
+    <databaseDB>sql6461693</databaseDB>
+    <passwordDB>CKxKGR4AtJ</passwordDB>
 </Environment>
