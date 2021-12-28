@@ -20,10 +20,15 @@ sign_in_page = None
 sign_up_page = None
 menu_page = None
 modal_page = None
+header_page = None
+transaction_select_page = None
+transaction_pay_page = None
+notifications_page = None
 
 calc_page = None
 
 demo_page = None
+
 
 @pytest.fixture(scope='class')
 def init_web(request):
