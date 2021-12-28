@@ -7,6 +7,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 
 from utilities.event_listener import EventListener
 from utilities.manage_electron_page import ManageElectronPages
+from utilities.manage_mobile_pages import ManageMobilePages
 from utilities.manage_web_pages import ManageWebPages
 from utilities.manage_desktop_pages import ManageDesktopPages
 
@@ -96,8 +97,7 @@ def init_mobile(request):
     driver = EventFiringWebDriver(edriver, EventListener())
     globals()['driver'] = driver
     request.cls.driver = driver
-
-    # ManageMobilePages.init_electron_pages(driver)
+    ManageMobilePages.init_mobile_pages(driver)
 
     yield
     driver.quit()
