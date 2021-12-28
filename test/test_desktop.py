@@ -10,5 +10,5 @@ class Test_Desktop:
 
     @allure.step("Test_calculate_addition")
     def test_01(self):
-       desktop_wf.calculate_addition()
+       desktop_flows.calculate_addition()
        assert get_result_calc(conf.calc_page.get_result()) == '6'
