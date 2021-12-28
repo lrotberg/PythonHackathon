@@ -1,6 +1,7 @@
 import time
 
 import allure
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -23,12 +24,14 @@ def search_click():
     conf.driver.implicitly_wait(10)
 
 
-
 @allure.step("Get Color Strip List Length")
 def get_listview_length():
-    lengthis=len(conf.menu_page.listview())
     time.sleep(2)
-    return lengthis
+    try:
+        conf.menu_page.roi_appear()
+    except NoSuchElementException:
+        return False
+        return True
 
 
 @allure.step("Navigate Home")
@@ -53,6 +56,7 @@ def multiply_action():
     click(conf.mobile_calc_page.number_9_button())
     click(conf.mobile_calc_page.equals_button())
     return get_text(conf.mobile_calc_page.result_field())
+
 
 @allure.step("Calculate Loan")
 def calculate_loan():

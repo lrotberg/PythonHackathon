@@ -21,7 +21,6 @@ class MenuPage:
         return self.driver.find_element(By.XPATH,"//*[@contentDescription='Navigate up']")
 
 
-
     def calculator_app(self):
         return self.driver.find_element(By.XPATH, "//*[@text='Calculator']")
 
