@@ -25,7 +25,7 @@ class CreditCardMinimumPage:
         return self.driver.find_element(By.ID, "payOffMonths")
 
     def interest_payment(self):
-        return self.driver.find_element(By.ID, "InterestPayment")
+        return self.driver.find_element(By.ID, "interestPayment")
 
     def total(self):
         return self.driver.find_element(By.ID, "total")
