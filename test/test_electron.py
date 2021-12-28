@@ -11,9 +11,10 @@ class Test_Electron:
         wf.click_menu()
         assert get_text(conf.demo_page.get_verify_menus()) == 'Menu'
 
+
     def test_02(self):
-        wf.click_open_links()
-        assert get_text(conf.demo_page.get_verify_links_file()) == 'shell'
+        wf.screen_info()
+        assert get_text(conf.demo_page.get_result()) == 'Your screen is: 1366px x 768px'
 
 
 
