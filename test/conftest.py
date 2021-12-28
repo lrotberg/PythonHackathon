@@ -60,6 +60,7 @@ def init_web(request):
     ManageWebPages.init_web_pages(driver)
 
     yield
+    eyes.close()
     eyes.abort()
     driver.quit()
 
